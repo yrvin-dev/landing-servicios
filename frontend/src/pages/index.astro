@@ -4,11 +4,13 @@ import Navbar from '../components/Navbar.jsx'
 import Testimonios from '../components/Testimonios.jsx'
 import Contacto from '../components/Contacto.jsx'
 
+const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL || 'http://localhost:1337';
+
 const [resHero, resServicios, resTestimonios, resClientes] = await Promise.all([
-  fetch('http://localhost:1337/api/hero'),
-  fetch('http://localhost:1337/api/servicios'),
-  fetch('http://localhost:1337/api/testimonios'),
-  fetch('http://localhost:1337/api/clientes')
+  fetch(`${STRAPI_URL}/api/hero`),
+  fetch(`${STRAPI_URL}/api/servicios`),
+  fetch(`${STRAPI_URL}/api/testimonios`),
+  fetch(`${STRAPI_URL}/api/clientes`)
 ])
 
 const { data: hero } = await resHero.json()
