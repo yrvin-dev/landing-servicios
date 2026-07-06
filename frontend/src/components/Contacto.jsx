@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL || 'http://localhost:1337';
+
 export default function Contacto() {
   const [form, setForm] = useState({
     nombre: "",
@@ -17,7 +19,7 @@ export default function Contacto() {
     setEstado("enviando")
 
     try {
-      const res = await fetch("http://localhost:1337/api/mensajes", {
+      const res = await fetch(`${STRAPI_URL}/api/mensajes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
